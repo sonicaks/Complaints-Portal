@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% load bootstrap4 %}
+
+{% block content %}
+	<h1>History</h1>
+	<table id="table" class="table-light table-bordered display nowrap" style="width:100%">
+		<thead class="alert-light">
+			<tr>
+				<th>Created at</th>
+				<th>Block number</th>
+				<th>Room number</th>
+				<th>Hall</th>
+				<th>Type</th>
+				<th>Message</th>
+				<th>Status</th>
+				<th>Edit/Delete</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for complaint in complaint_list %}
+				<tr>
+					<td>{{ complaint.created_at }}</td>
+					<td>{{ complaint.block_number }}</td>
+					<td>{{ complaint.room_number }}</td>
+					<td>{{ complaint.hall }}</td>
+					<td>{{ complaint.type }}</td>
+					<td>{{ complaint.message }}</td>
+					<td>{{ complaint.status }}</td>
+					<td style="text-align:center">
+						<a href="{% url 'student:update_complaint' pk=complaint.pk %}"><i class="fas fa-edit"></i></a>
+						<a href="{% url 'student:delete_complaint' pk=complaint.pk %}"><i class="fas fa-trash"></i></a>
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}
