@@ -31,3 +31,13 @@ urlpatterns += [
     path('accounts/', include('accounts.urls')),
     path('accounts/', include('registration.backends.default.urls'))
 ]
+
+# Student urls
+urlpatterns += [
+    path('student/', include('student.urls'))
+]
+
+# Worker urls
+urlpatterns += [
+    path('worker/', include('worker.urls'))
+]
