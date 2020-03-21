@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html>
+	<head>
+        <meta charset="utf-8">
+
+        <title>Complaints Portal</title>
+
+		<link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css">
+
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+	</head>
+
+	<body>
+		<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+			<a class="navbar-brand">Complaints Portal</a>
+
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarColor01">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="{% url 'home' %}">Home<span class="sr-only">(current)</span></a>
+					</li>
+					{% if user.is_authenticated %}
+						{% for type in user.account_type.all %}
+							{% if type.type == "STU" %}
+								<li class="nav-item">
+									<a class="nav-link" href="{% url 'student:create_complaint' %}">Complaints</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="{% url 'student:status' %}">Status</a>
+								</li>
+							{% else %}
+								<li class="nav-item">
+									<a class="nav-link" href="{% url 'worker:all_complaints' %}">View</a>
+								</li>
+							{% endif %}
+						{% endfor %}
+					{% endif %}
+				</ul>
+
+				<ul class="navbar-nav ml-auto">
+					{% if user.is_authenticated %}
+						<li class="nav-item">
+							<a class="nav-link" href="{% url 'auth_logout' %}">Logout</a>
+						</li>
+					{% else %}
+						<li class="nav-item">
+							<a class="nav-link" href="{% url 'registration_register' %}">Register</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="{% url 'auth_login' %}">Login</a>
+						</li>
+					{% endif %}
+				</ul>
+			</div>
+		</nav>
+
+		<div class='container'>
+			{% block content %}
+			{% endblock %}
+		</div>
+	</body>
+
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+	<script src="https://kit.fontawesome.com/ef886b06c1.js" crossorigin="anonymous"></script>
+	<script src="{% static '.js/dataTables.js' %}"></script>
+</html>
