@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% load bootstrap4 %}
+
+{% block content %}
+	<h1>Login</h1>
+	<form method='post'>
+		{% csrf_token %}
+		{% bootstrap_form form %}
+		{% buttons %}
+			<input type='submit' class='btn btn-primary' value='Login' />
+			<button type='button' class='btn btn-info' onclick="location.href='{% url 'auth_password_reset' %}'">Forgot password?</button>
+		{% endbuttons %}
+	</form>
+{% endblock %}

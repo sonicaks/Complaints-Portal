@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% load bootstrap4 %}
+
+{% block content %}
+	<h1>Register</h1>
+	<form method='post'>
+		{% csrf_token %}
+		{% bootstrap_form form %}
+		{% buttons %}
+			<input type='submit' class='btn btn-primary' value='Register' />
+			<button type='button' class='btn btn-info' onclick="location.href='{% url 'registration_resend_activation' %}'">Resend activation key</button>
+		{% endbuttons %}
+	</form>
+{% endblock %}
