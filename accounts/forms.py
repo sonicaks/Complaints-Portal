@@ -17,7 +17,7 @@ class UserCreateForm(RegistrationFormUniqueEmail):
 	type = forms.CharField(max_length=3, widget=forms.Select(choices=categories))
 
 	class Meta:
-		fields = ('first_name', 'last_name', 'username', 'email', 'type', 'password1', 'password2')
+		fields = ('username', 'first_name', 'last_name', 'email', 'type', 'password1', 'password2')
 		model = User
 
 	def __init__(self, *args, **kwargs):
