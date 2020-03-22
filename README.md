@@ -1,4 +1,5 @@
 ### About
+
 This project is an online complaints portal where students can register complaints related to hostel environment and workers solve the registered complaints. This portal is built using Django.
 
 Common problems faced by students in hostels of NIT Rourkela include: fan not working, tubelight not working, broken window panes, water cooler not working, LAN not working, etc. The students always need to go to __Chief Warden Office__ or __Data Center__ to register their complaints. Then the students need to wait for several days and the respective worker comes to the room/corridor and solves the problem. This is quite inefficient as there is no visibility in tracking the status of the problem as to when the worker sees the problem and arrives at the scene to solve the task. Our project aims to solve this issue by building an online portal to keep track of the problem status. We have also added a discussion system that allows users to discuss about when the worker needs to arrive to match the availability of student.
@@ -24,6 +25,10 @@ SECRET_KEY=XXXXXXXXXXXX
 `
 SENDGRID_API_KEY=XXXXXXXXXXXX
 `
+`
+DEBUG=True
+`
+
 ### Apps
 
 There are 4 major apps in the project as follows:
@@ -39,3 +44,7 @@ There are 4 major apps in the project as follows:
 
 - **comments**
 	- This handles the comments made by a user. User can comment on any complaint. They can see the comments made by them on any complaints and update or delete them if necessary.
+
+### Live
+
+- https://complaints-portal.herokuapp.com
