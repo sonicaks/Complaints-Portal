@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% load bootstrap4 %}
+
+{% block content %}
+	<h1>Update comment</h1>
+	<form method='post'>
+		{% csrf_token %}
+		{% bootstrap_form form %}
+		{% buttons %}
+			<input type='submit' class='btn btn-danger' value='Update' />
+		{% endbuttons %}
+	</form>
+{% endblock %}

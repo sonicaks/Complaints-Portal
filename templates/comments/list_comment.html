@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% load bootstrap4 %}
+
+{% block content %}
+	<h1>My comments</h1>
+	<table id="table" class="table-light table-bordered display nowrap" style="width:100%">
+		<thead class="alert-light">
+			<tr>
+				<th>Created at</th>
+				<th>Complaint</th>
+				<th>Message</th>
+				<th>Edit/Delete</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for comment in comment_list %}
+				<tr>
+					<td>{{ comment.created_at }}</td>
+					<td>{{ comment.comment }}</td>
+					<td>{{ comment.message }}</td>
+					<td style="text-align:center">
+						<a href="{% url 'comments:update_comment' pk=comment.pk %}"><i class="fas fa-edit"></i></a>
+						<a href="{% url 'comments:delete_comment' pk=comment.pk %}"><i class="fas fa-trash"></i></a>
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

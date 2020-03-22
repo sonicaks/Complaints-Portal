@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% load bootstrap4 %}
+
+{% block content %}
+	<h1>Complaint details</h1>
+	<h5>{{ complaint.message | linebreaks}}</h5>
+	<hr>
+	<h3>Comments</h3>
+	<table id="table" class="table-light table-bordered display nowrap" style="width:100%">
+		<thead class="alert-light">
+			<tr>
+				<th>Created at</th>
+				<th>Message</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for comment in complaint.comments.all %}
+				<tr>
+					<td>{{ comment.created_at }}</td>
+					<td>{{ comment.message }}</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	{% buttons %}
+		<button type='button' class='btn btn-primary' onclick="location.href='{% url 'comments:create_comment' pk=complaint.pk %}'">Create comment</button>
+	{% endbuttons %}
+{% endblock %}

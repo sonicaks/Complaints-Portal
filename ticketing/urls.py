@@ -41,3 +41,8 @@ urlpatterns += [
 urlpatterns += [
     path('worker/', include('worker.urls'))
 ]
+
+# Comment urls
+urlpatterns += [
+    path('comments/', include('comments.urls'))
+]

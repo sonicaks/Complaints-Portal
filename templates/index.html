@@ -24,7 +24,7 @@
 					<td>{{ complaint.message }}</td>
 					<td>{{ complaint.status }}</td>
 					<td style="text-align:center">
-						<a href="{% url 'student:update_complaint' pk=complaint.pk %}"><i class="fas fa-comments"></i></a>
+						<a href="{% url 'student:detail_complaint' pk=complaint.pk %}"><i class="fas fa-comments"></i></a>
 					</td>
 				</tr>
 			{% endfor %}

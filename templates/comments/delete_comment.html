@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% load bootstrap4 %}
+
+{% block content %}
+	<h1>Delete comment for sure?</h1>
+	<form method='post'>
+		{% csrf_token %}
+		{% buttons %}
+			<input type='submit' class='btn btn-danger' value='Delete' />
+			<a href="{% url 'comments:list_comment' %}" class="btn btn-success">Cancel</a>
+		{% endbuttons %}
+	</form>
+{% endblock %}

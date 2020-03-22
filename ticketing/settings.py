@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'accounts',
     'student',
     'worker',
+    'comments',
     'bootstrap4',
     'registration'
 ]

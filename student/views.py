@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
 User = get_user_model()
 from django.http import Http404
-from django.views.generic import CreateView, DeleteView, UpdateView, ListView
+from django.views.generic import CreateView, DeleteView, UpdateView, ListView, DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
 from . import models
@@ -39,6 +39,10 @@ class UpdateComplaintView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 		self.object.save()
 
 		return super().form_valid(form)
+
+class DetailComplaintView(LoginRequiredMixin, DetailView):
+	model = models.Complaint
+	template_name = 'student/detail_complaint.html'
 
 class DeleteComplaintView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 	model = models.Complaint
