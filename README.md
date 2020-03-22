@@ -6,7 +6,7 @@ Common problems faced by students in hostels of NIT Rourkela include: fan not wo
 
 ### Build steps
 
-1. Create a virtual environment in python (3.8.1).
+1. Create a virtual environment in python (3.8.2).
 2. Download this repo and `cd` into it.
 3. Inside the virtual environment type: `pip install -r requirements.txt`
 4. Setup the database migrations script: `python manage.py makemigrations`
@@ -14,7 +14,7 @@ Common problems faced by students in hostels of NIT Rourkela include: fan not wo
 6. Run the server by the typing the command: `python manage.py runserver`
 7. The server should be live at: http://127.0.0.1:8000/
 
-**Note:** After downloading this repo one needs to create .env file that stores the secret key of the Django application and sendgrid api key for email backend.
+**Note:** After downloading this repo one needs to create .env file that stores the secret key of the Django application, sendgrid api key for email backend and debug variable.
 
 **Example .env file:**
 
@@ -25,6 +25,7 @@ SECRET_KEY=XXXXXXXXXXXX
 `
 SENDGRID_API_KEY=XXXXXXXXXXXX
 `
+
 `
 DEBUG=True
 `
