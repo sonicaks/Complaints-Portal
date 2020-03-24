@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'worker',
     'comments',
     'bootstrap4',
-    'registration'
+    'registration',
+    'django_activeurl'
 ]
 
 MIDDLEWARE = [

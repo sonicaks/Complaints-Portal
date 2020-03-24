@@ -2,6 +2,8 @@
 
 {% load static %}
 
+{% load activeurl %}
+
 <html>
 	<head>
         <meta charset="utf-8">
@@ -23,47 +25,49 @@
 				<span class="navbar-toggler-icon"></span>
 			</button>
 
-			<div class="collapse navbar-collapse" id="navbarColor01">
-				<ul class="navbar-nav mr-auto">
-					<li class="nav-item">
-						<a class="nav-link" href="{% url 'home' %}">Home</a>
-					</li>
-					{% if user.is_authenticated %}
-						{% for type in user.account_type.all %}
-							{% if type.type == "STU" %}
-								<li class="nav-item">
-									<a class="nav-link" href="{% url 'student:create_complaint' %}">Complaints</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" href="{% url 'student:status' %}">Status</a>
-								</li>
-							{% else %}
-								<li class="nav-item">
-									<a class="nav-link" href="{% url 'worker:all_complaints' %}">View</a>
-								</li>
-							{% endif %}
-						{% endfor %}
+			{% activeurl %}
+				<div class="collapse navbar-collapse" id="navbarColor01">
+					<ul class="navbar-nav mr-auto">
 						<li class="nav-item">
-							<a class="nav-link" href="{% url 'comments:list_comment' %}">Comments</a>
+							<a class="nav-link" href="{% url 'home' %}">Home</a>
 						</li>
-					{% endif %}
-				</ul>
+						{% if user.is_authenticated %}
+							{% for type in user.account_type.all %}
+								{% if type.type == "STU" %}
+									<li class="nav-item">
+										<a class="nav-link" href="{% url 'student:create_complaint' %}">Complaints</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" href="{% url 'student:status' %}">Status</a>
+									</li>
+								{% else %}
+									<li class="nav-item">
+										<a class="nav-link" href="{% url 'worker:all_complaints' %}">View</a>
+									</li>
+								{% endif %}
+							{% endfor %}
+							<li class="nav-item">
+								<a class="nav-link" href="{% url 'comments:list_comment' %}">Comments</a>
+							</li>
+						{% endif %}
+					</ul>
 
-				<ul class="navbar-nav ml-auto">
-					{% if user.is_authenticated %}
-						<li class="nav-item">
-							<a class="nav-link" href="{% url 'auth_logout' %}">Logout</a>
-						</li>
-					{% else %}
-						<li class="nav-item">
-							<a class="nav-link" href="{% url 'registration_register' %}">Register</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="{% url 'auth_login' %}">Login</a>
-						</li>
-					{% endif %}
-				</ul>
-			</div>
+					<ul class="navbar-nav ml-auto">
+						{% if user.is_authenticated %}
+							<li class="nav-item">
+								<a class="nav-link" href="{% url 'auth_logout' %}">Logout</a>
+							</li>
+						{% else %}
+							<li class="nav-item">
+								<a class="nav-link" href="{% url 'registration_register' %}">Register</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="{% url 'auth_login' %}">Login</a>
+							</li>
+						{% endif %}
+					</ul>
+				</div>
+			{% endactiveurl %}
 		</nav>
 
 		<div class='container'>
