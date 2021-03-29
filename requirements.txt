@@ -18,7 +18,7 @@ lxml==4.5.0
 misaka==2.1.1
 psycopg2==2.8.4
 pycparser==2.20
-Pygments==2.6.1
+Pygments==2.7.4
 python-http-client==3.2.6
 pytz==2019.3
 sendgrid==6.1.3
