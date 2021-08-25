@@ -69,7 +69,7 @@ stages:
           PYTHON_VERSION: '3.6'
 
     steps:
-    - task: DownloadBuildArtifacts@1
+    - task: DownloadBuildArtifacts@0
       inputs:
         buildType: 'current'
         downloadType: 'single'
